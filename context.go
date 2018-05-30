@@ -43,6 +43,17 @@ func (c *Context) Param(name string) string {
 	return ""
 }
 
+
+// HasParam returns true if the named parameter value that is found in the URL path matching the current route.
+func (c *Context) HasParam(name string) bool {
+	for _, n := range c.pnames {
+		if n == name {
+			return true
+		}
+	}
+	return false
+}
+
 // Get returns the named data item previously registered with the context by calling Set.
 // If the named data item cannot be found, nil will be returned.
 func (c *Context) Get(name string) interface{} {
